@@ -20,7 +20,7 @@ btn.addEventListener("click", function () {
 
   xhr.onload = function () {
     let json = JSON.parse(this.responseText);
-    // console.log(json);
+
     // array is empty-------------------------
     if (!json.length) {
       notFound.innerHTML = "Result not found";
@@ -44,6 +44,7 @@ btn.addEventListener("click", function () {
     // result found-----------------
 
     let def = json[0].shortdef[0];
+
     meaning.innerHTML = def;
 
     // sound-------------
@@ -57,7 +58,11 @@ btn.addEventListener("click", function () {
       aud.controls = true;
       audio.appendChild(aud);
     }
-    input.value = "";
   };
+  notFound.innerHTML = "";
+  suggest.innerHTML = "";
+  meaning.innerHTML = "";
+  audio.innerHTML = "";
+  input.value = "";
   xhr.send();
 });
